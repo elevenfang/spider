@@ -40,12 +40,11 @@ def store_Video_Info(videoInfo, itemName):
 #       videoPic = each_info[1]
         line = videoName + '['+videoExtralInfo+']'+'\n'+videoUrl
         lines.append(line)
-    f = open('StoreFolder/' + itemName + '.txt', 'a＋')
+    f = open(itemName + '.txt', 'a＋')
     f.writelines('%s\n' % line for line in lines)
     f.close()
         
 def run_sprider(pathNo, itemName):
-    print pathNo, itemName
     i = 1
     while True:
         full_url = base_url + pathNo + '-' + str(i) + '.html'
@@ -60,7 +59,7 @@ def run_sprider(pathNo, itemName):
         except:
             print 'finish item:', pathNo
             break    
-    print 'total pages:', str(i), 'with source_path:', homePageUrl + pathNo + '****'
+    print itemName,' total pages:', str(i)
     
 sort_result = sorted(part_of_path_dict.iteritems(), key=lambda d:d[0]) 
 for (k, v) in  part_of_path_dict.items():
