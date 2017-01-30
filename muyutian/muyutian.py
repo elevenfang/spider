@@ -30,7 +30,8 @@ part_of_path_dict = {
     14: u'日韩剧',
     15: u'欧美剧',
     16: u'日韩动漫',
-    17: u'国产动漫'
+    17: u'国产动漫',
+    18: u'剧情片'
 }
 
 print('default encoding:' + sys.stdout.encoding)
@@ -84,14 +85,8 @@ def run_spider(path_no, item_name):
 
 
 def get_video_count(full_path):
-    count = 0
-    fp = open(full_path, "r")
-    while 1:
-        buffer = fp.read(8 * 1024 * 1024)
-        if not buffer:
-            break
-        count += buffer.count('\n')
-    return count
+    f = codecs.open(full_path, 'r', 'UTF-8')
+    return len(f.readlines()) // 2
 
 
 sorted_result = collections.OrderedDict(sorted(part_of_path_dict.items()))
