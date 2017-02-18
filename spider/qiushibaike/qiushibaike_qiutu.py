@@ -35,7 +35,7 @@ def download_img(image_path, image_url):
 
 def get_total_page_number():
     max_page = 1
-    response = requests.get("http://www.qiushibaike.com/imgrank/")
+    response = requests.get("http://www.qiushibaike.com/pic/")
     html = response.text
     soup = BeautifulSoup(html, "lxml")
     page_number_content = soup.find_all('span', {'class': 'page-numbers'})
